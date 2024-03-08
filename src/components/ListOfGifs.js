@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import getGifs from "../getGifs";
 import Gif from "./Gif";
 
-export default function ListOfGifs({params}) {
-    const { keyword } = useParams();
-    const [gifs, setGifs] = useState([]);
-    const [loading, setLoading] = useState(false);
+export default function ListOfGifs ({keyword}){
 
-    useEffect(() => {
+    console.log(keyword + 'keyword');
+    const [gifs, setGifs ] = useState([])
+
+
+  //Otro estado para LOADING
+  const [loading, setLoading ] = useState(false);
+
+  //Segundo parametro [] para que solo se ejecute una vez, es la dependencia
+    useEffect(function (){
         setLoading(true);
         getGifs({ keyword })
-        .then((gifs) => {
-            setGifs(gifs);
-            setLoading(false);
-        });
-    }, [keyword]);
+        .then(gifs => {
+            setGifs(gifs)
+            setLoading(false)
+        })
+    }, [keyword])
 
-    if (loading) return <div><span>Cargando ... ...</span></div>;
+    if(loading) return <span>Cargando ... ...</span>
 
-    return (
-        <div>
-        {gifs.map(({ id, title, url }) => (
-            <Gif
-            key={id}
-            title={title}
-            url={url}
-            id={id}
-            />
-        ))}
-        </div>
-    );
+    return gifs.map(({id,title,url}) =>
+        <Gif 
+        key={id} 
+        title={title} 
+        url={url} 
+        id={id} 
+        />
+    )
 }

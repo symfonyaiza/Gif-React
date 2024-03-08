@@ -10,12 +10,8 @@ function Buscador({ onSearch }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const params = { 
-            "keyword" : keyword
-        }
-
         // Llama a la función onSearch y pasa la keyword como argumento
-        onSearch(params);
+        onSearch(keyword);
     };
 
     return (
