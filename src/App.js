@@ -19,9 +19,11 @@ function App() {
     <div className="App">
       <section className="App-content">
         <Buscador onSearch={handleSearch} />
+        <div>
         <Link to='/gif/php'>Gifs de php</Link>
         <Link to='/gif/javascript'>Gifs de js</Link>
         <Link to='/gif/coding'>Gifs de code</Link>
+        </div>
         <Route path='/gif/:keyword' component={ListOfGifs} />
         <ListOfGifs keyword={searchKeyword}/>
       </section>
