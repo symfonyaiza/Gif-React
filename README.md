@@ -1,6 +1,6 @@
 # First contact with React
 
-Search of gifs with Giphy API
+Simply searcher of gifs with Giphy API
 
 # Getting Started with Create React App
 
